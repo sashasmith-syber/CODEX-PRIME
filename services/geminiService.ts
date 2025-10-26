@@ -2,16 +2,9 @@ import { GoogleGenAI, Chat } from '@google/genai';
 import { ChatMessage, Sender } from '../types';
 import { FULL_SYSTEM_INSTRUCTION, GEMINI_MODEL_NAME, OPERATOR_NAME } from '../constants';
 
-// FIX: Consolidate the declaration of `window.aistudio` directly within the `declare global` block
-// to prevent "subsequent property declarations" errors.
-declare global {
-  interface Window {
-    aistudio: {
-      hasSelectedApiKey: () => Promise<boolean>;
-      openSelectKey: () => Promise<void>;
-    };
-  }
-}
+// The `window.aistudio` object is assumed to be globally available and correctly typed
+// by the environment or other declaration files, as per the coding guidelines.
+// Removing this explicit `declare global` block resolves "subsequent property declarations" errors.
 
 let chatSession: Chat | null = null;
 

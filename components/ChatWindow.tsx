@@ -10,7 +10,7 @@ interface ChatWindowProps {
 const FloatingParticle: React.FC<{ delay: number }> = ({ delay }) => {
   return (
     <div
-      className="absolute rounded-full bg-[#39FF14]/20 blur-sm pointer-events-none"
+      className="absolute rounded-full blur-sm pointer-events-none" // Removed bg-color from className
       style={{
         width: Math.random() * 4 + 1 + 'px',
         height: Math.random() * 4 + 1 + 'px',
@@ -18,6 +18,7 @@ const FloatingParticle: React.FC<{ delay: number }> = ({ delay }) => {
         top: Math.random() * 100 + '%',
         animation: `float ${Math.random() * 10 + 15}s ease-in-out infinite`,
         animationDelay: `${delay}s`,
+        backgroundColor: 'var(--main-accent-color-transparent)', // Use CSS variable for dynamic color
       }}
     />
   );
@@ -53,7 +54,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messages }) => {
   return (
     <div className="h-screen w-full bg-black relative overflow-hidden flex flex-col font-['Space_Grotesk']">
       {/* Floating particles */}
-      {[...Array(30)].map((_, i) => (
+      {[...Array(12)].map((_, i) => ( // Reduced to 12 particles for optimal balance
         <FloatingParticle key={i} delay={i * 0.5} />
       ))}
 
